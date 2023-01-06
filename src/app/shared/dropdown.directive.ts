@@ -21,3 +21,4 @@ export class DropDownDirective{
         this.wasInside = false;
       }
 }
+//https://kyrcha.info/bits/angular-directive-to-toggle-a-bootstrap-dropdown-button
