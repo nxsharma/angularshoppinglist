@@ -16,7 +16,7 @@
                 Manage Recipe<span class="caret"></span>                
             </button>
             <div class="dropdown-menu" [ngClass]="{'show':r.isOpen}">
-                <a class="dropdown-item" href="#">To Shopping List</a>
+                <a class="dropdown-item" (click)="onAddToShoppingList()" style="cursor: pointer;">To Shopping List</a>
                 <a class="dropdown-item" href="#">Edit Recipt</a>
                 <a class="dropdown-item" href="#">Delete Recipe</a>
             </div>
