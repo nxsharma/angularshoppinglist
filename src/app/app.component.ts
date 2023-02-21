@@ -11,6 +11,9 @@ export class AppComponent {
 
   onNavigate(feature: string){
     this.loadedFeature = feature;
+    if(this.loadedFeature !== 'recipe'){
+      this.loadedFeature = 'shopping-list';
+    }
   }
  
 }
