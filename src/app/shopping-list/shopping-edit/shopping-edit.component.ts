@@ -36,7 +36,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     });
   }
 
-  onAddItem(form: NgForm){
+  onSubmit(form: NgForm){
     const value = form.value;
     // const ingName = this.nameInputRef.nativeElement.value; //old method
     // const ingAmount = this.amountInputRef.nativeElement.value;
@@ -49,6 +49,8 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
       this.slService.addIngredient(newIngredient);
 
     }
+    this.editMode = false;
+    form.reset();
   }
 
   ngOnDestroy(): void {
