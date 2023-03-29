@@ -19,7 +19,7 @@ export class RecipeService{
         new Recipe('Butter Chicken','This is simply a test','https://en.wikipedia.org/wiki/Butter_chicken#/media/File:Chicken_makhani.jpg',
         [
             new Ingredient('Buns',1),
-            new Ingredient('MEat Fries',20)
+            new Ingredient('Chicken Fries',20)
         ])
       
     ];

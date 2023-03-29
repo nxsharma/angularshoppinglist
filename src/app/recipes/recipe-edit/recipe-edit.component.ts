@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -15,19 +15,33 @@ export class RecipeEditComponent implements OnInit {
 
   constructor(private route:ActivatedRoute, private recipeService: RecipeService) { }
 
-  ngOnInit(): void {
-    this.route.params.subscribe(
+  ngOnInit() {
+   
+    //let tempId = JSON.parse(JSON.stringify(this.id));
+  //  let tempEditMode = JSON.parse(JSON.stringify(this.editMode));
+  
+  this.route.params.subscribe(
       (params: Params) => {
-        this.id = +params['id'];
-        this.editMode = params['id'] ! = null;
+        console.log(params['id']);
+        this.id = + params['id'];
+        this.editMode = params['id'] !== null;
         this.initForm();
         console.log(this.editMode);
       }
-    )
+    );
   }
 
-  private initForm(){
-    
+  //not necessary but example of setters
+  public set ID(newID: number){
+    this.id = newID;
+  }
+
+  public set EDITMODE(newEditMode: boolean){
+    this.editMode = newEditMode;
+  }
+
+  private initForm(){    
+
     let recipeName = '';
     let recipeImagePath = '';
     let recipeDescription = '';
@@ -46,6 +60,10 @@ export class RecipeEditComponent implements OnInit {
       'description': new FormControl(recipeDescription)
     });
   
+  }
+
+  onSubmit(){
+    console.log(this.recipeForm);
   }
 
 }
