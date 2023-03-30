@@ -11,12 +11,12 @@ export class RecipeService{
 
 
     private recipes: Recipe[] = [
-        new Recipe('Biryani','This is simply a test','https://en.wikipedia.org/wiki/Biryani#/media/File:Biryani_of_Lahore.jpg',  
+        new Recipe('Biryani','This is simply a test','https://glebekitchen.com/wp-content/uploads/2019/12/chickenbiryanibowltop-500x375.jpg',  
          [
             new Ingredient('Meat',1),
             new Ingredient('Frendch Fries',20)
         ]), 
-        new Recipe('Butter Chicken','This is simply a test','https://en.wikipedia.org/wiki/Butter_chicken#/media/File:Chicken_makhani.jpg',
+        new Recipe('Butter Chicken','This is simply a test','https://images.immediate.co.uk/production/volatile/sites/30/2021/02/butter-chicken-ac2ff98.jpg',
         [
             new Ingredient('Buns',1),
             new Ingredient('Chicken Fries',20)
