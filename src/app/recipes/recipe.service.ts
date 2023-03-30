@@ -6,6 +6,8 @@ import { Recipe } from "./recipe.model";
 
 @Injectable()
 export class RecipeService{
+
+    recipesChanged = new Subject<Recipe[]>;
     //recipeSelected = new EventEmitter<Recipe>();
     //recipeSelected = new Subject<Recipe>(); //new method can be used
 
@@ -38,6 +40,19 @@ export class RecipeService{
 
     addIngredientsToShoppingList(ingredients: Ingredient[]){
         this.slService.addIngredients(ingredients);
+    }
+
+    addRecipe(recipe: Recipe){
+
+        //same approach we used in shoppinglist service
+        this.recipes.push(recipe);
+        this.recipesChanged.next(this.recipes.slice());
+
+    }
+    
+    updateRecipe(index: number, newRecipe: Recipe){
+        this.recipes[index] = newRecipe;
+        this.recipesChanged.next(this.recipes.slice());
     }
 
    

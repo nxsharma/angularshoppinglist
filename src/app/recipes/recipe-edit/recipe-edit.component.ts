@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { RecipeService } from '../recipe.service';
 export class RecipeEditComponent implements OnInit {
   id: number;
   editMode = false;
+  newMode = false;
   recipeForm: FormGroup;
 
   constructor(private route:ActivatedRoute, private recipeService: RecipeService) { }
@@ -18,17 +20,23 @@ export class RecipeEditComponent implements OnInit {
   ngOnInit() {
    
     //let tempId = JSON.parse(JSON.stringify(this.id));
-  //  let tempEditMode = JSON.parse(JSON.stringify(this.editMode));
+    //let tempEditMode = JSON.parse(JSON.stringify(this.editMode));
   
-  this.route.params.subscribe(
-      (params: Params) => {
-        console.log(params['id']);
-        this.id = + params['id'];
-        this.editMode = params['id'] !== null;
-        this.initForm();
-        console.log(this.editMode);
-      }
-    );
+    this.route.params.subscribe(
+        (params: Params) => {
+          
+            console.log(params['id']);
+            if(params['id'] !== undefined){
+              this.id = + params['id'];
+            }
+            
+            this.editMode = params['id'] !== null && params['id'] !== undefined;
+            this.initForm();
+            console.log(this.editMode);
+          
+          
+        }
+      );
   }
 
   //not necessary but example of setters
@@ -74,10 +82,7 @@ export class RecipeEditComponent implements OnInit {
   
   }
 
-  onSubmit(){
-    console.log(this.recipeForm);
-  }
-
+  
   get controls(){
     return (<FormArray>this.recipeForm.get('ingredients')).controls;
   }
@@ -89,5 +94,20 @@ export class RecipeEditComponent implements OnInit {
         'amount': new FormControl(null,[Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)])
       })
     );
+  }
+
+  onSubmit(){
+    // const newRecipe = new Recipe(
+    //   this.recipeForm.value['name'],
+    //   this.recipeForm.value['description'],
+    //   this.recipeForm.value['imagePath'],
+    //   this.recipeForm.value['ingredients']
+    // );
+    if(this.editMode){
+      this.recipeService.updateRecipe(this.id, this.recipeForm.value);
+    }
+    else{
+      this.recipeService.addRecipe(this.recipeForm.value);
+    }
   }
 }
