@@ -15,7 +15,7 @@ export class RecipeEditComponent implements OnInit {
   newMode = false;
   recipeForm: FormGroup;
 
-  constructor(private route:ActivatedRoute, private recipeService: RecipeService) { }
+  constructor(private route:ActivatedRoute, private recipeService: RecipeService, private router: Router) { }
 
   ngOnInit() {
    
@@ -109,5 +109,10 @@ export class RecipeEditComponent implements OnInit {
     else{
       this.recipeService.addRecipe(this.recipeForm.value);
     }
+    this.onCancel();
+  }
+
+  onCancel(){
+    this.router.navigate(['../'],{relativeTo: this.route});
   }
 }
