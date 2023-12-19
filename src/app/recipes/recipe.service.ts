@@ -12,20 +12,20 @@ export class RecipeService{
     //recipeSelected = new Subject<Recipe>(); //new method can be used
 
 
-    private recipes: Recipe[] = [
-        new Recipe('Biryani','This is simply a test','https://glebekitchen.com/wp-content/uploads/2019/12/chickenbiryanibowltop-500x375.jpg',  
-         [
-            new Ingredient('Meat',1),
-            new Ingredient('Frendch Fries',20)
-        ]), 
-        new Recipe('Butter Chicken','This is simply a test','https://images.immediate.co.uk/production/volatile/sites/30/2021/02/butter-chicken-ac2ff98.jpg',
-        [
-            new Ingredient('Buns',1),
-            new Ingredient('Chicken Fries',20)
-        ])
+    // private recipes: Recipe[] = [
+    //     new Recipe('Biryani','This is simply a test','https://glebekitchen.com/wp-content/uploads/2019/12/chickenbiryanibowltop-500x375.jpg',  
+    //      [
+    //         new Ingredient('Meat',1),
+    //         new Ingredient('Frendch Fries',20)
+    //     ]), 
+    //     new Recipe('Butter Chicken','This is simply a test','https://images.immediate.co.uk/production/volatile/sites/30/2021/02/butter-chicken-ac2ff98.jpg',
+    //     [
+    //         new Ingredient('Buns',1),
+    //         new Ingredient('Chicken Fries',20)
+    //     ])
       
-    ];
-
+    // ];
+    private recipes: Recipe[] = [];
     constructor(private slService: ShoppingListService ){
 
     }
@@ -60,5 +60,9 @@ export class RecipeService{
         this.recipesChanged.next(this.recipes.slice());
     }
 
+    setRecipes(recipes: Recipe[]){
+        this.recipes = recipes;
+        this.recipesChanged.next(this.recipes.slice());
+    }
    
 }
