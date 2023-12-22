@@ -10,17 +10,20 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active" routerLinkActive="active">
                         <!-- <a class="nav-link" href="#" (click)="onSelect('recipe')">Recipes</a></li> -->
-                        <a class ="nav-link" routerLink="/recipes">Recipes</a></li>
+                        <a class ="nav-link" routerLink="/recipes" *ngIf ="isAuthenticated">Recipes</a></li>
 
                     <li class="nav-item active" routerLinkActive="active">
                         <!-- <a class="nav-link" href="#" (click)="onSelect('shopping-list')">Shopping List</a></li> -->
-                        <a class="nav-link" routerLink="/auth">Authenticate</a></li>
+                        <a class="nav-link" routerLink="/auth" *ngIf="!isAuthenticated">Authenticate</a></li>
                     <li class="nav-item active" routerLinkActive="active">
                             <!-- <a class="nav-link" href="#" (click)="onSelect('shopping-list')">Shopping List</a></li> -->
                             <a class="nav-link" routerLink="/shopping-list">Shopping List</a></li>
 
                 </ul>
                 <ul class="navbar-nav">
+                    <li *ngIf="isAuthenticated">
+                        <a style="cursor: pointer;">Logout</a>
+                    </li>
                     <li class="nav-item dropdown" appDropDown #r="appDropDown">
                         <a style="cursor: pointer;" class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton">Manage <span class="caret"></span></a>
                         <div class="dropdown-menu" [ngClass]="{'show':r.isOpen}">
