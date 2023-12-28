@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { DropDownDirective } from "../shared/dropdown.directive";
 import { DirectivesModule } from "../directives.module";
+import { RecipesRoutingModule } from "./recipes-routing.module";
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { DirectivesModule } from "../directives.module";
    
     
     ],
-    imports:[RouterModule, CommonModule, ReactiveFormsModule, DirectivesModule],
+    imports:[RouterModule, CommonModule, ReactiveFormsModule, DirectivesModule, RecipesRoutingModule],
     exports:[
         RecipesComponent,
     RecipeListComponent,
