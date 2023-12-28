@@ -24,14 +24,14 @@ import { AlertComponenet } from './shared/alert/alert.component';
 import { PlaceHolderDirective } from './shared/placeholder/placeholder.directive';
 import { RecipesModule } from './recipes/recipes.module';
 import { DirectivesModule } from './directives.module';
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     
-    ShoppingListComponent,
-    ShoppingEditComponent,
+ 
    // DropDownDirective,
     
     AuthComponent,
@@ -46,7 +46,8 @@ import { DirectivesModule } from './directives.module';
     HttpClientModule,
     AppRoutingModule,
     RecipesModule,
-    DirectivesModule
+    DirectivesModule,
+    ShoppingListModule
     
   ],
   providers: [ShoppingListService, RecipeService,{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
