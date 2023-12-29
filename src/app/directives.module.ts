@@ -4,7 +4,7 @@ import { DropDownDirective } from './shared/dropdown.directive';
 
 @NgModule({
   imports: [],
-  declarations: [DropDownDirective],
-  exports: [DropDownDirective]
+  //declarations: [DropDownDirective],
+ // exports: [DropDownDirective]
 })
 export class DirectivesModule { }
