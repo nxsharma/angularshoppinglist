@@ -5,6 +5,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import { PlaceHolderDirective } from './placeholder/placeholder.directive';
 import { DropDownDirective } from './dropdown.directive';
 import { CommonModule } from '@angular/common';
+import { LoggingService } from '../logging.service';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { CommonModule } from '@angular/common';
         CommonModule
 
     ],
+    providers: [LoggingService] //instead of this use injectable wherever you need the service otherwise you may end up with multiple instances and bugs
     //entryComponents: [AlertComponenet]
 })
 
